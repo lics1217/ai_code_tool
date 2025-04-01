@@ -1,0 +1,29 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-size: calc(var(--base-font-size) * var(--scale-factor));
+  color: var(--vscode-editor-text-color);
+
+  /* 变量 */
+  --vscode-editor-text-color: #abb2bf;
+  --vscode-input-background: #1d1f23;
+
+  --base-font-size: 16px; /* 基础字体大小 */
+  --base-margin-size: 8px; /* 基础字体大小 */
+  --scale-factor: 0.8125; /* 缩放因子，默认为1 */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,221 @@
+{
+  "name": "codeaide",
+  "displayName": "CodeAide",
+  "icon": "media/logo.png",
+  "version": "1.0.42",
+  "description": "代码助手，AI辅助编程",
+  "main": "out/extension.js",
+  "scripts": {
+    "esbuild:base": "node scripts/esbuild.js",
+    "esbuild:watch": "pnpm run esbuild:base --sourcemap --watch",
+    "unbuild:watch": "unbuild --stub",
+    "package-publish": "node ./bin/scripts/package-publish.mjs"
+  },
+  "keywords": [
+    "AI",
+    "AI-Code"
+  ],
+  "author": "Swell",
+  "publisher": "Swell-CodeAid",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/18355166248/CodeAid"
+  },
+  "categories": [
+    "AI",
+    "Chat",
+    "Programming Languages",
+    "Education",
+    "Machine Learning",
+    "Snippets"
+  ],
+  "license": "ISC",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codeAid",
+          "title": "CodeAid",
+          "icon": "media/codeAidSingleLogo.svg"
+        }
+      ]
+    },
+    "views": {
+      "codeAid": [
+        {
+          "type": "webview",
+          "id": "codeAid.codeAidGUIView",
+          "name": "",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "CodeAid",
+      "properties": {
+        "codeAid.EnableCodelens": {
+          "type": "object",
+          "properties": {
+            "extension.addComment": {
+              "type": "boolean",
+              "description": "是否开启生成函数注释的行间展示"
+            },
+            "extension.generateTest": {
+              "type": "boolean",
+              "description": "是否开启生成单测用例的行间展示"
+            },
+            "extension.explainCode": {
+              "type": "boolean",
+              "description": "是否开启代码解释的行间展示"
+            }
+          },
+          "default": {
+            "extension.addComment": true,
+            "extension.generateTest": true,
+            "extension.explainCode": true
+          },
+          "additionalProperties": false,
+          "markdownDescription": "配置函数注释、生成单测、代码解释的行间展示"
+        }
+      }
+    },
+    "submenus": [
+      {
+        "id": "codeAid.continueSubMenu",
+        "label": "CodeAid"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "codeAid.openSetting",
+          "group": "navigation@1",
+          "when": "view == codeAid.codeAidGUIView"
+        },
+        {
+          "command": "codeAid.cleatChat",
+          "group": "navigation@1",
+          "when": "view == codeAid.codeAidGUIView"
+        },
+        {
+          "command": "codeAid.OpenConfigJson",
+          "group": "navigation@1",
+          "when": "view == codeAid.codeAidGUIView"
+        }
+      ],
+      "editor/context": [
+        {
+          "submenu": "codeAid.continueSubMenu",
+          "group": "0_codeAid"
+        }
+      ],
+      "codeAid.continueSubMenu": [
+        {
+          "command": "codeAid.fixCode",
+          "group": "CodeAid",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "codeAid.optimizeCode",
+          "group": "CodeAid",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "codeAid.commentCode",
+          "group": "CodeAid",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "codeAid.writeDocstringForCode",
+          "group": "CodeAid",
+          "when": "editorHasSelection"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "codeAid.openSetting",
+        "category": "CodeAid",
+        "title": "打开设置",
+        "icon": "$(settings-gear)",
+        "group": "CodeAid"
+      },
+      {
+        "command": "codeAid.cleatChat",
+        "category": "CodeAid",
+        "title": "清除聊天",
+        "icon": "$(clear-all)",
+        "group": "CodeAid",
+        "enablement": "myExtension.disabledClearChat"
+      },
+      {
+        "command": "codeAid.fixCode",
+        "category": "CodeAid",
+        "title": "修复代码",
+        "icon": "$(lightbulb-antefix)",
+        "group": "CodeAid"
+      },
+      {
+        "command": "codeAid.commentCode",
+        "category": "CodeAid",
+        "title": "解释代码",
+        "icon": "$(lightbulb-antefix)",
+        "group": "CodeAid"
+      },
+      {
+        "command": "codeAid.writeDocstringForCode",
+        "category": "CodeAid",
+        "title": "添加注释",
+        "icon": "$(lightbulb-antefix)",
+        "group": "CodeAid"
+      },
+      {
+        "command": "codeAid.optimizeCode",
+        "category": "CodeAid",
+        "title": "优化代码",
+        "icon": "$(lightbulb-antefix)",
+        "group": "CodeAid"
+      },
+      {
+        "command": "codeAid.OpenConfigJson",
+        "category": "CodeAid",
+        "title": "打开本地 CodeAid 下 config.json",
+        "icon": "$(settings-edit)",
+        "group": "CodeAid"
+      }
+    ],
+    "icons": {
+      "code-aid": {
+        "description": "Ubuntu icon",
+        "default": {
+          "fontPath": "media/iconfont.woff2",
+          "fontCharacter": "\\e607"
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.8",
+    "@types/uuid": "^10.0.0",
+    "chalk": "^4.1.2",
+    "esbuild": "^0.23.1",
+    "eslint": "^9.9.0",
+    "lodash": "^4.17.21",
+    "typescript": "^5.5.4",
+    "unbuild": "^2.0.0",
+    "vsce": "^2.15.0"
+  },
+  "engines": {
+    "vscode": ">=1.92.0",
+    "node": ">=20.11.0"
+  },
+  "dependencies": {
+    "@types/vscode": "^1.92.0",
+    "core": "workspace:*",
+    "uuid": "^10.0.0"
+  }
+}
