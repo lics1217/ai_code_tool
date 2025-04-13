@@ -113,7 +113,7 @@ export class VscodeExtension {
     // 代码补全
     context.subscriptions.push(
       vscode.languages.registerInlineCompletionItemProvider(
-        { pattern: "**/*.{js,ts,jsx,tsx}" }, // 根据需要调整文件类型
+        { pattern: "**/*.{js,ts,jsx,tsx,php,go}" }, // 根据需要调整文件类型
         // ["typescript", "javascript", "typescriptreact", "javascriptreact"],
         new InlineCompletionProvider(
           this.configProvider,

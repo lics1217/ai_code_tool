@@ -20,6 +20,7 @@ export class Ollama extends BaseLLM {
     // Custom Node.js fetch
     const customFetch = async (input: URL | RequestInfo, init: any) => {
       try {
+        console.log("🛰️ 请求发出 Ollama:", input, init); 
         const resp = await fetchWithRequestOptions(new URL(input as any), {
           ...init,
         });
@@ -75,6 +76,7 @@ export class Ollama extends BaseLLM {
     _prompt: string,
     options: CompletionOptions,
   ): AsyncGenerator<string> {
+    console.log("📝 正在触发 _streamComplete");
     const response = await this.fetch("http://localhost:11434/api/generate", {
       method: "POST",
       headers: {
@@ -114,6 +116,7 @@ export class Ollama extends BaseLLM {
     completionOptions: CompletionOptions = {},
     cancelToken?: AbortSignal,
   ): AsyncGenerator<ChatMessage> {
+    console.log("正在触发 _streamChat");
     const response = await this.fetch("http://localhost:11434/api/chat", {
       method: "POST",
       headers: {

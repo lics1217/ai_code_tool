@@ -31,7 +31,7 @@ export const initialState: State = {
   model: "Llama 3", // azure_openai_gpt_4o Llama 3
   inputValue: "",
   messages: [...defaultMessages],
-  active: false,
+  active:true,
 };
 
 export const useChatStore = create<State & Action>()(

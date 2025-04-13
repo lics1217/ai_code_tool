@@ -18,6 +18,7 @@ const Footer = () => {
   }
 
   function send() {
+    console.log("lics click send");
     sendMessage();
   }
 
@@ -33,7 +34,7 @@ const Footer = () => {
             });
           }}
           className="input-ans-msg px-4"
-          placeholder="请输入聊天内容"
+          placeholder="请输入聊天内容lics"
           autoSize={{ minRows: 1, maxRows: 4 }}
           onPressEnter={send}
           onKeyDown={handleKeyDown}
@@ -54,7 +55,7 @@ const Footer = () => {
       {active ? (
         <div className="abort absolute -top-10 flex justify-center">
           <Button onClick={handlerAbort} danger>
-            停止生成
+            停止生成!
           </Button>
         </div>
       ) : null}

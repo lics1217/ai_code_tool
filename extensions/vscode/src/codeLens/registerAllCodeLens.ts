@@ -8,6 +8,9 @@ const selector = [
   { language: "javascriptreact", scheme: "file" },
   { language: "typescript", scheme: "file" },
   { language: "javascript", scheme: "file" },
+  { language: "php", scheme: "file" },
+  { language: "python", scheme: "file" },
+  { language: "go", scheme: "file" },
 ];
 
 export function registerAllCodelens(

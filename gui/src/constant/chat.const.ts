@@ -3,8 +3,8 @@ type ChatModelsType = "llama" | "gpt";
 // 模型
 export const ChatModelsEnum = {
   "Llama 3": {
-    value: "llama3.1:latest",
-    label: "llama3(本地)",
+    value: "llama3.2",
+    label: "llama3(本地lics)",
     type: "llama" as ChatModelsType,
   },
   starcoder2: {

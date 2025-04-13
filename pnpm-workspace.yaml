@@ -1,6 +1,6 @@
 packages:
   - "packages/*"
   - "extensions/**"
-  - "GUI/**"
+  - "gui/**"
   - "docs"
   - "docs-docusaurus"
