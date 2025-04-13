@@ -4,7 +4,7 @@ type ChatModelsType = "llama" | "gpt";
 export const ChatModelsEnum = {
   "Llama 3": {
     value: "llama3.2",
-    label: "llama3(本地lics)",
+    label: "llama3(本地)",
     type: "llama" as ChatModelsType,
   },
   starcoder2: {

@@ -34,7 +34,7 @@ const Footer = () => {
             });
           }}
           className="input-ans-msg px-4"
-          placeholder="请输入聊天内容lics"
+          placeholder="请输入聊天内容"
           autoSize={{ minRows: 1, maxRows: 4 }}
           onPressEnter={send}
           onKeyDown={handleKeyDown}
